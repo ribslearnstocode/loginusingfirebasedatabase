@@ -42,7 +42,13 @@ const Login = () => {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => loginUser(email, password)}
+        onPress={() => {
+          try {
+            loginUser(email, password);
+          } catch {
+            print("print not sent");
+          }
+        }}
       >
         <Text style={{ fontWeight: "bold", fontSize: 22 }}>Login</Text>
       </TouchableOpacity>
