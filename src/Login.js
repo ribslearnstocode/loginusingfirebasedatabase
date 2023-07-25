@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../config";
+import Dashboard from "./Dashboard";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -15,7 +16,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   loginUser = async (email, password) => {
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(navigation.navigate('Dashboard'));
     } catch (error) {
       alert(error.message);
     }
