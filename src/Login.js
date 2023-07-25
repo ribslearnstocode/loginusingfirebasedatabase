@@ -8,7 +8,6 @@ import {
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../config";
-import Dashboard from "./Dashboard";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -19,7 +18,7 @@ const Login = () => {
       await firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(navigation.navigate('Dashboard'));
+        .then(alert("true psswd email"));
     } catch (error) {
       alert(error.message);
     }
