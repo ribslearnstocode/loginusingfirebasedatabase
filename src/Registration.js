@@ -6,7 +6,8 @@ import {
   StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
-import firebase from "../config";
+import { firebase } from "../config";
+
 import "firebase/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
@@ -17,13 +18,12 @@ const Registration = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   registerUser = async (email, password, firstName, lastName) => {
-    await firebase
-      .auth()
+    await firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         firebase
           .auth()
-          .currentuser.sendEmailVerification({
+          .currentUser.sendEmailVerification({
             handleCodeInApp: true,
             url: "https://mitxrib8n3e.firebaseapp.com",
           })
@@ -37,7 +37,7 @@ const Registration = () => {
             firebase
               .firestore()
               .collection("users")
-              .doc(firebase.auth().currentuser.uid)
+              .doc(firebase.auth().currentUser.uid)
               .set({
                 firstName,
                 lastName,

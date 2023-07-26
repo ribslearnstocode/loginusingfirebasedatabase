@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 // import firebase from "firebase/compat";
-import firebase from "../config";
+import { firebase } from "../config";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
